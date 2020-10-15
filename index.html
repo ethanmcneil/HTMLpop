@@ -6,7 +6,7 @@
     <style>
         .flex {
             display: flex;
-
+            flex-wrap: wrap;
         }
 
         .center {
@@ -17,6 +17,12 @@
             width: 350px;
             height: 300px;
             cursor: pointer;
+
+        }
+        .box:hover {
+             opacity: .5;
+          transition: ease-in;
+          transition-duration: 100ms;
         }
 
         .image-container {
@@ -35,7 +41,7 @@
         }
 
         .subtitle {
-            font-size: 12px;
+            font-size: 1em;
             color: darkslategrey;
             display: flex;
             justify-content: space-between;
@@ -78,104 +84,205 @@
         .read-description {
             margin-top: 5px;
         }
+
+        .activeBox {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row-reverse;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0px auto;
+            padding: 20px;
+        }
+        .activeBox .image-container {
+            width: 65%;
+            height: auto;
+        }
+        .activeBox .column-two {
+            width: 30%;
+        }
+        .activeBox img {
+            max-width: 600px;
+            width: 90%;
+            min-width: 250px;
+            height: auto;
+            border: 1px solid black;
+            margin: 10px;
+        }
+        .activeBox div {
+            margin: 10px;
+        }
+
+        .activeBox .subtitle {
+            display: inline-block;
+        }
+
+        .activeBox .event-name {
+            font-size: 2em;
+        }
+
+        .google-map{
+            border: 1px solid black;
+            width: 100%;
+            min-height: 250px;
+
+      }
+      #goBack {
+          padding: 10px;
+          margin: 0px auto;
+          width: 200px;
+          background-color: whitesmoke;
+          color: darkslategray;
+          border: 1px solid black;
+          justify-content: center;
+
+      }
+      #goBack:hover {
+          background-color: black;
+          color: white;
+          transition: ease-in;
+          transition-duration: 300ms;
+      }
+
+        @media only screen and (max-width: 860px) {
+            .activeBox .image-container {
+            width: 100%;
+        }
+        .activeBox .column-two {
+            width: 100%;
+        }
+        }
+
     </style>
 </head>
 
 <body>
     <div>
         <div id="js-event-cards" class="event-card">
+            <button id="goBack" class="hide" onclick="goBack()">Go Back To Events</button>
             <div class="flex center" id="cards">
-                <div id="js-event-single-card-id-1" class="box" onclick="showEvent(this)">
-                    <div class="singleShow backToEvents hide"><button onclick="goBack(this)">Go Back To Events</button></div>
+                <div id="js-event-single-card-id-1" class="box">
                     <div class="image-container"><img class="js-event-image"
                             src="https://drive.google.com/uc?id=1zrEQb-9qfPqxSnxnKRHSzoLagEDyDMwO" alt="Event Graphic">
                         <div class="js-event-image-date small-box border">
                             <div class="js-month">Oct</div>
                             <div class="js-day">1</div>
                         </div>
+                        <div id="js-event-read-description-id-1" class="subtitle read-description singleShow hide">Lorem
+                            ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis ligula dapibus arcu vehicula
+                            iaculis. Nullam consectetur nec felis sed congue. Mauris non mi pretium, tincidunt sapien in,
+                            auctor lectus. Donec cursus augue ac varius auctor.</div>
                     </div>
-                    <h2 class="singleShow locationHead hide">Location:</h2>
-                    <h3 class="event-name">Atlanta Freedom March</h3>
-                    <div class="mapEvent singleShow hide">Map will go here . . .</div>
+                    <div class="column-two">
+                    <h3 class="event-name">Atlanta Freedom March</h3>        
                     <div class="subtitle  gray">
+                        <h3 class="singleShow hide">Event Start:</h3>
                         <div class="js-event-date">Oct 1, 2020</div>
+                        <h3 class="singleShow hide">Event End:</h3>
                         <div class="js-event-end-date singleShow hide">Oct 1, 2020</div>
+                        <h3 class="singleShow locationHead hide">Location:</h3>
                         <div class="js-event-location">Atlanta, GA</div>
                     </div>
-                    <div id="js-event-read-description-id-1" class="subtitle read-description singleShow hide">Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis ligula dapibus arcu vehicula
-                        iaculis. Nullam consectetur nec felis sed congue. Mauris non mi pretium, tincidunt sapien in,
-                        auctor lectus. Donec cursus augue ac varius auctor.</div>
+                    </div>
+                    <div class="google-map singleShow hide">Map will go here . . .</div>
                 </div>
-
-                <div id="js-event-single-card-id-1" class="box" onclick="showEvent()">
-                    <div class="singleShow backToEvents hide"><button>Go Back To Events</button></div>
+                <div id="js-event-single-card-id-2" class="box">
                     <div class="image-container"><img class="js-event-image"
                             src="https://drive.google.com/uc?id=1zrEQb-9qfPqxSnxnKRHSzoLagEDyDMwO" alt="Event Graphic">
                         <div class="js-event-image-date small-box border">
                             <div class="js-month">Oct</div>
                             <div class="js-day">2</div>
                         </div>
+                        <div id="js-event-read-description-id-2" class="subtitle read-description singleShow hide">Lorem
+                            ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis ligula dapibus arcu vehicula
+                            iaculis. Nullam consectetur nec felis sed congue. Mauris non mi pretium, tincidunt sapien in,
+                            auctor lectus. Donec cursus augue ac varius auctor.</div>
                     </div>
-                    <h2 class="singleShow locationHead hide">Location:</h2>
-                    <h3 class="event-name">Redding Freedom March</h3>
-                    <div class="mapEvent singleShow hide">Map will go here . . .</div>
+                    <div class="column-two">
+                    <h3 class="event-name">Redding Freedom March</h3>        
                     <div class="subtitle  gray">
+                        <h3 class="singleShow hide">Event Start:</h3>
                         <div class="js-event-date">Oct 2, 2020</div>
+                        <h3 class="singleShow hide">Event End:</h3>
                         <div class="js-event-end-date singleShow hide">Oct 2, 2020</div>
-                        <div class="js-event-location">Redding, CA</div>
+                        <h3 class="singleShow locationHead hide">Location:</h3>
+                        <div class="js-event-location">redding, CA</div>
                     </div>
-                    <div id="js-event-read-description-id-1" class="subtitle read-description singleShow hide">Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis ligula dapibus arcu vehicula
-                        iaculis. Nullam consectetur nec felis sed congue. Mauris non mi pretium, tincidunt sapien in,
-                        auctor lectus. Donec cursus augue ac varius auctor.</div>
+                    </div>
+                    <div class="google-map singleShow hide">Map will go here . . .</div>
                 </div>
-                <div id="js-event-single-card-id-1" class="box" onclick="showEvent()">
-                    <div class="singleShow backToEvents hide"><button>Go Back To Events</button></div>
+                <div id="js-event-single-card-id-3" class="box">
                     <div class="image-container"><img class="js-event-image"
                             src="https://drive.google.com/uc?id=1zrEQb-9qfPqxSnxnKRHSzoLagEDyDMwO" alt="Event Graphic">
                         <div class="js-event-image-date small-box border">
                             <div class="js-month">Oct</div>
                             <div class="js-day">3</div>
                         </div>
+                        <div id="js-event-read-description-id-3" class="subtitle read-description singleShow hide">Lorem
+                            ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis ligula dapibus arcu vehicula
+                            iaculis. Nullam consectetur nec felis sed congue. Mauris non mi pretium, tincidunt sapien in,
+                            auctor lectus. Donec cursus augue ac varius auctor.</div>
                     </div>
-                    <h2 class="singleShow locationHead hide">Location:</h2>
-                    <h3 class="event-name">Freedom Freedom March</h3>
-                    <div class="mapEvent singleShow hide">Map will go here . . .</div>
+                    <div class="column-two">
+                    <h3 class="event-name">Freedom Freedom March</h3>        
                     <div class="subtitle  gray">
+                        <h3 class="singleShow hide">Event Start:</h3>
                         <div class="js-event-date">Oct 3, 2020</div>
+                        <h3 class="singleShow hide">Event End:</h3>
                         <div class="js-event-end-date singleShow hide">Oct 3, 2020</div>
+                        <h3 class="singleShow locationHead hide">Location:</h3>
                         <div class="js-event-location">Freedom, IN</div>
                     </div>
-                    <div id="js-event-read-description-id-1" class="subtitle read-description singleShow hide">Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis ligula dapibus arcu vehicula
-                        iaculis. Nullam consectetur nec felis sed congue. Mauris non mi pretium, tincidunt sapien in,
-                        auctor lectus. Donec cursus augue ac varius auctor.</div>
+                    </div>
+                    <div class="google-map singleShow hide">Map will go here . . .</div>
                 </div>
+
+            
             </div>
         </div>
     </div>
     <script>
+        var box = document.getElementsByClassName("box");
+        for (var i = 0; i < box.length; i++) {
+               box[i].addEventListener("click", function(){
+                   if (!this.classList.contains("activeBox")){
+                   showEvent(this);
+                   }
+               }, false);
+        }
         function showEvent(element) {
-            console.log("showEvent ran");
-            var singleShow = element.getElementsByClassName("singleShow");
+            var singleShow =  element.getElementsByClassName("singleShow");
             element.classList.remove("box");
             element.classList.add("bigBox");
+            element.classList.add("activeBox")
             for (var i = 0; i < singleShow.length; i++) {
                 singleShow[i].classList.remove("hide");
             }
+            document.getElementById("goBack").classList.remove("hide");
+            document.getElementById("goBack").classList.add("flex");
+            var eventsToHide = document.getElementsByClassName("box");
+            for (var i = 0; i < eventsToHide.length; i++) {
+                eventsToHide[i].classList.add("hide");
+            }
+            element.getElementsByClassName("js-event-image-date")[0].classList.add("hide");
         }
-        function goBack(element) {
-            console.log("goBack ran");
-            var singleShow = element.parentElement.parentElement.getElementsByClassName("singleShow");
+        function goBack() {
+            var eventsToUnhide = document.getElementsByClassName("box");
+            for (var i = 0; i < eventsToUnhide.length; i++) {
+                eventsToUnhide[i].classList.remove("hide");
+            }
+            var element = document.getElementsByClassName("activeBox");
+            var singleShow = element[0].getElementsByClassName("singleShow");
             for (var i = 0; i < singleShow.length; i++) {
                 singleShow[i].classList.add("hide");
             }
-            element.parentElement.parentElement.classList.remove("bigBox");
-            element.parentElement.parentElement.classList.add("box");
-            element.parentElement.parentElement.onclick = function() {
-                return false;
-            }
+            element[0].classList.remove("bigBox");
+            element[0].classList.add("box");
+            element[0].getElementsByClassName("js-event-image-date")[0].classList.remove("hide");
+            element[0].classList.remove("activeBox");
+            document.getElementById("goBack").classList.add("hide");
+            document.getElementById("goBack").classList.remove("flex");
+           
         }
 
     </script>
